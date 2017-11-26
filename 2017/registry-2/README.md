@@ -25,8 +25,8 @@ Now we connect to MySQL:
 
   Next we create a database user (powerdns) for PowerDNS:
 
-    > GRANT ALL ON powerdns.* TO 'power_admin'@'localhost' IDENTIFIED BY 'power_admin_password';\\\
-    > GRANT ALL ON powerdns.* TO 'power_admin'@'localhost.localdomain' IDENTIFIED BY 'power_admin_password';\\
+    > GRANT ALL ON powerdns.* TO 'power_admin'@'localhost' IDENTIFIED BY 'power_admin_password';
+    > GRANT ALL ON powerdns.* TO 'power_admin'@'localhost.localdomain' IDENTIFIED BY 'power_admin_password';
     > FLUSH PRIVILEGES;
 
   (Replace power_admin_password with a password of your choice.)
@@ -71,32 +71,32 @@ account VARCHAR(40) DEFAULT NULL
 );
 
 ... and finally leave the MySQL shell:
-  > quit;
+   > quit;
 
 Now we must configure PowerDNS so that it uses the MySQL backend:
   $ vi /etc/powerdns/pdns.conf
 
 Add the line launch=gmysql to pdns.conf:
->[...]
+    >[...]
     ################################# 
     # launch        Which backends to launch and order to query them in 
     #   
     # launch=
     launch=gmysql        
-  [...]
+    [...]
 Then open /etc/powerdns/pdns.d/pdns.local and make it look as follows:
-> vi /etc/powerdns/pdns.d/pdns.local
+    > vi /etc/powerdns/pdns.d/pdns.local
 
 #### Here comes the local changes the user made, like configuration of ####
 #### the several backends that exists.####
 
->gmysql-host=127.0.0.1 \\
->gmysql-user=power_admin \\
->gmysql-password=power_admin_password \\
->gmysql-dbname=powerdns
+    > gmysql-host=127.0.0.1 
+    > gmysql-user=power_admin 
+    > gmysql-password=power_admin_password 
+    > gmysql-dbname=powerdns
 
 Then restart pdns:
->/etc/init.d/pdns restart
+    > /etc/init.d/pdns restart
 
 That's it, PowerDNS is now ready to be used. To learn more about it, please refer to its documentation: http://downloads.powerdns.com/documentation/html/index.html
 
