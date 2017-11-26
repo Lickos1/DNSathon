@@ -80,11 +80,9 @@ Add the line launch=gmysql to pdns.conf:
 >[...]
     ################################# 
     # launch        Which backends to launch and order to query them in 
-    
     #   
     # launch=
-    launch=gmysql    
-    
+    launch=gmysql        
   [...]
 Then open /etc/powerdns/pdns.d/pdns.local and make it look as follows:
 > vi /etc/powerdns/pdns.d/pdns.local
@@ -92,10 +90,10 @@ Then open /etc/powerdns/pdns.d/pdns.local and make it look as follows:
 #### Here comes the local changes the user made, like configuration of ####
 #### the several backends that exists.####
 
->gmysql-host=127.0.0.1\\
->gmysql-user=power_admin\\
->gmysql-password=power_admin_password\\
->gmysql-dbname=powerdns\\
+>gmysql-host=127.0.0.1 \\
+>gmysql-user=power_admin \\
+>gmysql-password=power_admin_password \\
+>gmysql-dbname=powerdns
 
 Then restart pdns:
 >/etc/init.d/pdns restart
