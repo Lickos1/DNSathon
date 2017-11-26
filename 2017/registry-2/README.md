@@ -25,8 +25,8 @@ Now we connect to MySQL:
 
   Next we create a database user (powerdns) for PowerDNS:
 
-    > GRANT ALL ON powerdns.* TO 'power_admin'@'localhost' IDENTIFIED BY 'power_admin_password';
-    > GRANT ALL ON powerdns.* TO 'power_admin'@'localhost.localdomain' IDENTIFIED BY 'power_admin_password';
+    > GRANT ALL ON powerdns.* TO 'power_admin'@'localhost' IDENTIFIED BY 'power_admin_password';\\\
+    > GRANT ALL ON powerdns.* TO 'power_admin'@'localhost.localdomain' IDENTIFIED BY 'power_admin_password';\\
     > FLUSH PRIVILEGES;
 
   (Replace power_admin_password with a password of your choice.)
@@ -78,15 +78,11 @@ Now we must configure PowerDNS so that it uses the MySQL backend:
 
 Add the line launch=gmysql to pdns.conf:
 >[...]
-    #################################
+    ################################# 
+    # launch        Which backends to launch and order to query them in 
     
-    
-    # launch        Which backends to launch and order to query them in
-      
-    #
-    
+    #   
     # launch=
-    
     launch=gmysql    
     
   [...]
@@ -96,10 +92,11 @@ Then open /etc/powerdns/pdns.d/pdns.local and make it look as follows:
 #### Here comes the local changes the user made, like configuration of ####
 #### the several backends that exists.####
 
->gmysql-host=127.0.0.1
->gmysql-user=power_admin
->gmysql-password=power_admin_password
->gmysql-dbname=powerdns
+>gmysql-host=127.0.0.1\\
+>gmysql-user=power_admin\\
+>gmysql-password=power_admin_password\\
+>gmysql-dbname=powerdns\\
+
 Then restart pdns:
 >/etc/init.d/pdns restart
 
@@ -112,15 +109,18 @@ That's it, PowerDNS is now ready to be used. To learn more about it, please refe
 
 Continue installing libc-client without Maildir support? <-- Yes
 Poweradmin also requires the following two PEAR packages:
+
 > pear install DB
 > pear install pear/MDB2#mysql
 
 Now all prerequisites for Poweradmin are installed, and we can begin with the Poweradmin installation (I will install it in a subdirectory of /var/www - /var/www is the document root of Apache's default web site on Debian; if you've created a vhost with a different document root, please adjust the paths).
 Go to https://www.poweradmin.org/trac/wiki/GettingPoweradmin and download the latest Poweradmin package, e.g. as follows:
+
 > cd /tmp
 > wget http://sourceforge.net/projects/poweradmin/files/poweradmin-2.1.7.tgz
 
 Then install it to the /var/www/poweradmin directory as follows:
+
 > tar xvfz poweradmin-2.1.7.tgz
 > mv poweradmin-2.1.7/ /var/www/html/poweradmin
 > touch /var/www/poweradmin/inc/config.inc.php
