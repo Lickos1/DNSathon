@@ -79,10 +79,16 @@ Now we must configure PowerDNS so that it uses the MySQL backend:
 Add the line launch=gmysql to pdns.conf:
 >[...]
     #################################
+    
+    
     # launch        Which backends to launch and order to query them in
+      
     #
+    
     # launch=
-    launch=gmysql
+    
+    launch=gmysql    
+    
   [...]
 Then open /etc/powerdns/pdns.d/pdns.local and make it look as follows:
 > vi /etc/powerdns/pdns.d/pdns.local
@@ -119,7 +125,6 @@ Then install it to the /var/www/poweradmin directory as follows:
 > mv poweradmin-2.1.7/ /var/www/html/poweradmin
 > touch /var/www/poweradmin/inc/config.inc.php
 > sudo chown -R www-data:www-data /var/www/html/poweradmin/
-
 > sudo service apache2 start
 
 
