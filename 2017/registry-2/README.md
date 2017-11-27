@@ -75,11 +75,11 @@ Now we create the tables needed by PowerDNS...
 
  ... and finally leave the MySQL shell:
     
-      quit;
+    > quit;
 
-    Now we must configure PowerDNS so that it uses the MySQL backend:
+ Now we must configure PowerDNS so that it uses the MySQL backend:
     
-       vi /etc/powerdns/pdns.conf
+   > vi /etc/powerdns/pdns.conf
 
 Add the line launch=gmysql to pdns.conf:
 
@@ -120,7 +120,9 @@ Continue installing libc-client without Maildir support? <-- Yes
 Poweradmin also requires the following two PEAR packages:
 
    >$ pear install DB
+   
    >$ pear install pear/MDB2#mysql
+
 
 Now all prerequisites for Poweradmin are installed, and we can begin with the Poweradmin installation (I will install it in a subdirectory of /var/www - /var/www is the document root of Apache's default web site on Debian; if you've created a vhost with a different document root, please adjust the paths).
 Go to https://www.poweradmin.org/trac/wiki/GettingPoweradmin and download the latest Poweradmin package, e.g. as follows:
