@@ -74,16 +74,16 @@ account VARCHAR(40) DEFAULT NULL
    > quit;
 
 Now we must configure PowerDNS so that it uses the MySQL backend:
-  $ vi /etc/powerdns/pdns.conf
+  > vi /etc/powerdns/pdns.conf
 
 Add the line launch=gmysql to pdns.conf:
-    >[...]
-    ################################# 
-    # launch        Which backends to launch and order to query them in 
-    #   
-    # launch=
-    launch=gmysql        
-    [...]
+    > [...]
+    > ################################# 
+    > # launch        Which backends to launch and order to query them in 
+    > #   
+    > # launch=
+    > launch=gmysql        
+    > [...]
 Then open /etc/powerdns/pdns.d/pdns.local and make it look as follows:
     > vi /etc/powerdns/pdns.d/pdns.local
 
